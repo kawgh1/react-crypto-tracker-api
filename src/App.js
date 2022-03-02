@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
+import Coin from './Coin';
 
 // https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false
 
@@ -32,10 +33,14 @@ function App() {
 
   console.log(coins)
 
-  function handleChange(event) {
-    setSearch(event.target.value)
-    console.log(search)
+  // function handleChange(event) {
+  //   setSearch(event.target.value)
+  //   console.log(search)
 
+  // }
+
+  const handleChange = event => {
+    setSearch(event.target.value)
   }
 
   const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()))
@@ -56,9 +61,22 @@ function App() {
                   onChange={handleChange} />
         </form>
       </div>
-      {filteredCoins.map(coin => (
-          <div>{coin.name}</div>
-      ))}
+      <div className='coin-container'>
+        {filteredCoins.map(coin => {
+        return (
+          <Coin 
+              key={coin.id} 
+              name={coin.name} 
+              price={coin.current_price}
+              priceChange={coin.price_change_percentage_24h} 
+              image={coin.image}
+              symbol={coin.symbol}
+              market_cap={coin.market_cap}
+              volume={coin.total_volume} 
+            />
+        )
+      })}</div>
+      
     </div>
   );
 }
