@@ -5,6 +5,7 @@
 
         function App() {
 
+            const [search, setSearch] = useState('');
             const [coins, setCoins] = useState([]);
 
             
@@ -34,6 +35,10 @@
         App.js
         ...
         ...
+
+         function handleChange(event) {
+                setSearch(event.target.value)
+        }
 
         const filteredCoins = coins.filter(
             coin => coin.name.toLowerCase().includes(search.toLowerCase()));

@@ -33,14 +33,15 @@ function App() {
 
   console.log(coins)
 
-  // function handleChange(event) {
-  //   setSearch(event.target.value)
-  //   console.log(search)
+  
 
+  // const handleChange = event => {
+  //   setSearch(event.target.value)
   // }
 
-  const handleChange = event => {
+  function handleChange(event) {
     setSearch(event.target.value)
+
   }
 
   const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()))
