@@ -1,6 +1,6 @@
 # Basic React app using the Coin Gecko API
 
-    - API call with useEffect
+- API call with useEffect
 
 
         function App() {
@@ -48,7 +48,7 @@
                             onChange={handleChange} />
                     </form>
                 </div>
-                
+
                 <div className='coin-container'>
                     {filteredCoins.map(coin => {
                         return (
