@@ -11,6 +11,7 @@ import './App.css';
 function App() {
 
   const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState('');
 
   
   async function getCoins() {
@@ -25,16 +26,39 @@ function App() {
   }
 
   useEffect(() => {
-    getCoins();
-  }, [])
+      getCoins();
+    
+  }, []);
 
   console.log(coins)
+
+  function handleChange(event) {
+    setSearch(event.target.value)
+    console.log(search)
+
+  }
+
+  const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()))
+  
+
+ 
+  
 
 
 
   return (
     <div className="coin-app">
-      <h1></h1>
+      <div className='coin-search'>
+        <h1 className='coin-text'>Search for a cryptocurrency</h1>
+        {/* form */}
+        <form>
+          <input type='text' className='coin-input' placeholder="Search" 
+                  onChange={handleChange} />
+        </form>
+      </div>
+      {filteredCoins.map(coin => (
+          <div>{coin.name}</div>
+      ))}
     </div>
   );
 }
